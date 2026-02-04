@@ -34,6 +34,10 @@ public class Program
         //7.constructor vs Static constructor
         AppSettings user6 = new AppSettings();
         Console.WriteLine(user6);
+        Console.WriteLine("This is project");
+        Console.WriteLine("This is solution explorer");
+        Console.WriteLine("This is solution explorer");
+
 
     }
 }

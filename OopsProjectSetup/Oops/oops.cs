@@ -113,6 +113,7 @@ namespace OopsProjectSetup.Oops
             public UserProfile1(string name,int age,string city):this(name,age)
             {
                 City = city;
+                Console.WriteLine("Constructor Chaining using this()");
             }
 
             //Use ToString() method to print object details
