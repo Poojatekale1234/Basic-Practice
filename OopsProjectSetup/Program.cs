@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using OopsProjectSetup.Oops;
+using System.Runtime.InteropServices;
 using static OopsProjectSetup.Oops.oops;
 
 public class Program
@@ -32,15 +33,91 @@ public class Program
         //Console.WriteLine(user5.AppName);
 
         //7.constructor vs Static constructor
-        AppSettings user6 = new AppSettings();
-        Console.WriteLine(user6);
-        Console.WriteLine("This is project");
-        Console.WriteLine("This is solution explorer");
-        Console.WriteLine("This is solution explorer");
-        Console.WriteLine("This is solution explorer");
+        //AppSettings user6 = new AppSettings();
+        //Console.WriteLine(user6);
+        //Console.WriteLine("This is project");
+        //Console.WriteLine("This is solution explorer");
 
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //1.Idebtify static vs instance methods
+        //Given a calculator with add and multiply methods. Decide whteher these methods should be static or instance methods and explain why.
+
+        //Static Method
+        //int sum = Calculator.perform(5, 3);
+        //Console.WriteLine("the Addition is :" + sum);
+
+        //int multiply = Calculator.perform(2, 4);
+        //Console.WriteLine("The Multiply is :" +  multiply);
+
+        ////Instance Method
+        //Calculator calc = new Calculator();
+        //int sum1 = calc.perform1(5, 5);
+        //Console.WriteLine("The Addition is:" + sum1);
+
+        //int multiply1 = calc.perform1(1, 4);
+        //Console.WriteLine("The multiply is :" + multiply1);
+
+        //2.
+        // User Name = "Maithili";
+        //Console.WriteLine(User.Greet("Maithili"));
+
+        //3.
+        //Service service = new Service();
+        //bool isValid = Service.ValidEmail("tekale16@gmail.com");
+        //Console.WriteLine("Is Valid Email: " + isValid);
+
+
+        //4.
+        // class contains a static counter incremented in the constructor. Create multiple objects and predict the output.
+
+        //Counter cnt = new Counter();
+        //Counter cnt1 = new Counter();   
+        //Counter cnt2 = new Counter();
+
+        //5.tatic method tries to access an instance variable. Identify the error and fix it using two different approaches.
+
+        //This approach is wrong beacause static method cannot access instance variable directly
+        // public class Sample
+        //{
+        //    public int instanceVar = 10;    //Instace var
+
+        //    public static void Show()
+        //    {
+        //        Console.WriteLine("instance value");
+        //    }
+
+        //}
+
+        //     public class Sample1
+        //{
+        //    private static int instanceVar = 10;   
+
+        //    public static void Show()
+        //    {
+        //        //Sample1 obj = new Sample1();
+        //        Console.WriteLine(instanceVar);
+        //    }
+
+        //}
+
+            public class Sample1
+    {
+        private static int instanceVar = 10;    
+
+        public static void Show()
+        {
+            Sample1 obj = new Sample1();
+            Console.WriteLine(instanceVar);
+        }
 
     }
+
+
+
 }
+
 

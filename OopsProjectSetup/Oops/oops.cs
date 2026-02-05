@@ -69,7 +69,7 @@ namespace OopsProjectSetup.Oops
                 Name = name;
             }
 
-            public UserProfile(String city,int age)
+            public UserProfile(String city, int age)
             {
                 City = city;
             }
@@ -105,12 +105,12 @@ namespace OopsProjectSetup.Oops
                 Name = name;
             }
 
-            public UserProfile1(String name,int age):this(name)
+            public UserProfile1(String name, int age) : this(name)
             {
                 this.age = age;
             }
 
-            public UserProfile1(string name,int age,string city):this(name,age)
+            public UserProfile1(string name, int age, string city) : this(name, age)
             {
                 City = city;
                 Console.WriteLine("Constructor Chaining using this()");
@@ -132,7 +132,7 @@ namespace OopsProjectSetup.Oops
 
         //6.Private Constructor
         //Create a class AdminConfig with a provate Constructor and a static property AppName
-        
+
         public class AdminConfig
         {
             public string AppName { get; set; }
@@ -168,19 +168,100 @@ namespace OopsProjectSetup.Oops
             public AppSettings()
             {
                 Enviornment = "Nice";
-             }
+            }
 
             public override string ToString()
             {
-                return $"Application Name :{ ApplicationName}  Enviornment:{Enviornment }";
+                return $"Application Name :{ApplicationName}  Enviornment:{Enviornment}";
             }
         }
-            
-        //8.Singleone pattern using Construcotor
-        //Create a singleton class USing private constructor, static instance , and pub;ic static property
-        //Mention real-time use case (cache, configuration, logger)
+    }
 
+    //8.Singleone pattern using Construcotor
+    //Create a singleton class USing private constructor, static instance , and pub;ic static property
+    //Mention real-time use case (cache, configuration, logger)
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    //Staic method vs Instance method - exercise
+
+    //1.Idebtify static vs instance methods
+    //Given a calculator with add and multiply methods. Decide whteher these methods should be static or instance methods and explain why.
+
+    public class Calculator
+    {
+        //Static method
+        public static int perform(int a, int b)
+        {
+            return a + b;
+            return a * b;
+        }
+
+        //Instance method
+        public int perform1(int a, int b)
+        {
+            return a + b;
+            return a * b;
+        }
 
     }
+
+    //2.A user class has a Name property. MOdify a stayic greeting method so that it uses the user's name.
+    //Decide whether the method should be static or instance
+
+    public class User
+    {
+        public static String Name { get; set; }
+
+        public static string Greet()
+        {
+            return $"Hello, {Name}!";
+        }
+
+    }
+
+    //3.An EmailService class has methods for sending email and validating email format. Identify which
+        //method should be static and which should be instance, with reasoning.
+
+        public class Service
+    {
+        public static bool ValidEmail(String email)
+        {
+            return email.Contains("@");
+        }
+
+        public void Sendemail(String email, String subject)
+        {
+            if(ValidEmail(email))
+            {
+                Console.WriteLine($"Sending email to {email} with subject {subject}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid email address");
+            }
+        }
+    }
+
+
+    //4. class contains a static counter incremented in the constructor. Create multiple objects and predict the output.
+    public class Counter
+    {
+        public static int count = 0;
+
+        public Counter()
+        {               
+            count++;
+            Console.WriteLine("Counter value:" + count);
+        }
+    }
+
+    //5.tatic method tries to access an instance variable. Identify the error and fix it using two different approaches.
+   
+
 }
 
+    
