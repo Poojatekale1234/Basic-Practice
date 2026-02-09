@@ -1,8 +1,12 @@
-﻿using System;
+﻿using OopsProjectSetup.Oops;   //Path to access oops namespace
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Net;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using OopsProjectSetup.Oops;   //Path to access oops namespace
+using System.Xml.Linq;
 
 namespace OopsProjectSetup.Oops
 {
@@ -11,7 +15,7 @@ namespace OopsProjectSetup.Oops
         //1.Create a class AdminUSer with properties AdminId, Name, and isActive
         //The default constructor should set IsActive = true.
         //Create an object and print the IsActive value
-
+    }
         public class AdminUser
         {
             public int AdminId { get; set; }
@@ -224,9 +228,9 @@ namespace OopsProjectSetup.Oops
     }
 
     //3.An EmailService class has methods for sending email and validating email format. Identify which
-        //method should be static and which should be instance, with reasoning.
+    //method should be static and which should be instance, with reasoning.
 
-        public class Service
+    public class Service
     {
         public static bool ValidEmail(String email)
         {
@@ -235,7 +239,7 @@ namespace OopsProjectSetup.Oops
 
         public void Sendemail(String email, String subject)
         {
-            if(ValidEmail(email))
+            if (ValidEmail(email))
             {
                 Console.WriteLine($"Sending email to {email} with subject {subject}");
             }
@@ -253,15 +257,406 @@ namespace OopsProjectSetup.Oops
         public static int count = 0;
 
         public Counter()
-        {               
+        {
             count++;
             Console.WriteLine("Counter value:" + count);
         }
     }
 
+
     //5.tatic method tries to access an instance variable. Identify the error and fix it using two different approaches.
-   
+
+
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------INHERITANCE-------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//1.Practice
+    public class P : Object
+{
+    public void M1()
+    {
+        Console.WriteLine("p");
+    }
+}
+
+public class  C : P
+{
+    public void M2()
+    {
+        Console.WriteLine("c");
+    }
+    
+}
+
+
+//2.
+    public class Bird : Object
+{
+    public Bird()
+    {
+        Console.WriteLine("Bird Constructor");
+    }
+}
+
+public class sparrow : Bird
+{
+    public sparrow()
+    {
+               Console.WriteLine("Sparrow Constructor");
+
+    }
+}
+
+public class sparrowChild : sparrow
+
+{
+    public sparrowChild()
+    {
+        Console.WriteLine("Sparrow Child Constructor");
+    }
+}
+
+//3.Constructor chaining using base
+
+public class  Animal : Object
+{
+    public Animal ()
+    {
+        Console.WriteLine("Animal Constructor");
+    }
+}
+
+public class Tiger : Animal
+{
+    public Tiger (String name) 
+    {
+        Console.WriteLine("Tiger Constructor");
+    }
+}
+
+public class TigerChild : Tiger
+{
+    public TigerChild() : base ("Hello")
+    {
+        Console.WriteLine("Tiger Child Constructor");
+    }
+}
+
+//Example on constructor chainging
+
+public class Birds : Object
+{
+    public Birds()
+    {
+        Console.WriteLine("Bird Constructor");
+    }
+}
+
+public class Sparrows : Birds
+{
+    public Sparrows(int a)
+    {
+        Console.WriteLine("Sparrow Constructor");
+    }
+}
+
+public class SparrowChilds : Sparrows
+{
+    public SparrowChilds() : base(1)
+    {
+        Console.WriteLine("Sparrow Child Constructor");
+    }
+}
+
+//Inheritance Dia Assignment
+//1.
+public class Person
+{
+    public string Name { get; set; }
+    public string Address { get; set; }
+
+    public Person(string name, string address)
+    {
+        this.Name = name;
+        this.Address = address;
+    }
+
+    //public void SETaddress(string address)
+    //{
+    //    this.address = address;
+    //}
+
+    public override string ToString()
+    {
+        return $"Name: {Name}, Address: {Address}";
+    }
+}
+
+    public class Student : Person
+    {
+        public string program { get; set; }
+        public int year { get; set; }
+        public double fee { get; set; }
+
+
+        public Student(string name, string address, string program, int year, double fee) : base(name, address)
+        {
+            this.program = program;
+            this.year = year;
+            this.fee = fee;
+        }
+
+        public override string ToString()
+        {
+            return $"name: {base.Name}, Address: {base.Address}, Program: {program}, Year: {year}, Fee: {fee}";
+        }
+
+
+    }
+
+    public class Staff : Person
+    {
+        public string school { get; set; }
+        public double pay { get; set; }
+
+        public Staff(string name, string address, string school, double pay) : base(name, address)
+        {
+            this.school = school;
+            this.pay = pay;
+
+        }
+        public override string ToString()
+        {
+            return $"school: {school}, Pay: {pay}";
+        }
+    }
+
+//3.
+public class point2D
+{
+    public int x { get; set; }
+    public int y { get; set; }
+
+    //Default constructor
+    public point2D()
+    {
+        x = 0;
+        y = 0;
+    }
+
+    //parametrized constructor
+    public point2D(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+
+    public void XY(float x, float y)
+    {
+        x = x;y = y;
+    }
+
+    public float[] GETXY()
+    {
+        return new float[] { x, y };
+        }
+
+    public override string ToString()
+    {
+        return $"X: {x}, Y: {y}";
+    }
+}
+
+public class point3D : point2D
+{
+    public int z { get; set; }
+
+    //Default constructor
+    public point3D() :base()
+    {
+        z = 0;
+    }
+
+    //Parametrized constructor
+    public point3D(int x,int y, int z) :base(x,y)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    //Array of XYZ
+    public void XYZ(float x, float y,float z)
+    {
+        x = x; y = y; z = z;
+    }
+
+    //
+    public float[] GETXYZ()
+    {
+        return new float[] { x, y, z };
+    }
+
+    public override string ToString()
+    {
+        return $"X: {base.x}, Y: {base.y}, Z: {z}";
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//09-02-2026
+//--------------------------------------------------------------------------------------------------
+//1.Assignment 1:DRIVE EXAMPLE  (Weakly bond = = aggregation = loosly couple)
+
+public class Author
+{
+    public string Name { get; set; }    
+    public string Email { get; set; }
+    public char Gender { get; set; }
+
+    public Author(string name, string email, char gender)
+    {
+       Name = name;
+       Email = email;
+        Gender = gender;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} {(Gender)} {Email}";
+    }
+}
+
+public class Book
+{
+    public string Name { get; set; }
+    public Author Auth { get; set; }
+    public double Price { get; set; }
+    public int Qty { get; set; }
+
+    public Book(string name, Author auth,double price, int qty)
+    {
+        Name = name;
+        this.Auth = auth;
+        Price = price;
+        Qty = qty;
+    }
+
+    public override string  ToString()
+    {
+        return $"{Name} by {Auth}";
+    }
+}
+
+
+//2.ASSIGNMENT 2:DRIVE EXAMPLE
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public char Gender { get; set; }
+
+   public Customer (int id, string name, char gender)
+    {
+        ID = id;
+        Name = name;
+        Gender = gender;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} ({ID})";
+    }
 
 }
 
-    
+public class Account
+{
+    public int ID { get; set; }
+    public Customer Custom { get; set; }
+    public double Balance { get; set; }
+
+    public Account (int id, Customer custom,double balance)
+    {
+        ID = id;
+        Custom = custom;
+        Balance = balance;
+    }
+
+    public override string ToString()
+    {
+        return $"{Custom.Name} {(ID)} balance = {Balance}";
+    }
+
+    public double Deposite(double amount)
+    {
+        return amount + Balance;
+    }
+
+    public double Withdraw(double amount)
+    {
+        if (Balance >= amount)
+        {
+            return Balance - amount;
+        }
+
+        else
+        {
+            Console.WriteLine("Amount Withdraw");
+            return Balance;
+        }
+
+    }
+
+}
+
+//3.ASSIGNMNET 3 : DRIVE EXAMPLE
+
+public class Customer1
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Discount { get; set; }
+
+    public Customer1(int id, string name, int discount)
+    {
+        ID = id;
+        Name = name;
+        Discount = discount;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} ({ID}) with discount {Discount}%";
+    }
+
+}
+
+public class Invoice
+{
+    public int ID { get; set; }
+    public Customer1 Custom { get; set; }
+    public double Amount { get; set; }
+
+    public Invoice(int id, Customer1 customer,double amount)
+    {
+        ID = id;
+        Custom = customer;
+        Amount = amount;
+    }
+
+  public double AfterAmountDiscount()
+    {
+        Amount = Amount - (Amount * (Custom.Discount / 100));
+        return Amount;
+    }
+
+}
+
+

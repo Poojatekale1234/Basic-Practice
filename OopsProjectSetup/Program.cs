@@ -1,11 +1,13 @@
 ﻿using OopsProjectSetup.Oops;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 using static OopsProjectSetup.Oops.oops;
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
+//public class Program
+//{
+//    public static void Main(string[] args)
+//    {
         //1.Default Constructor
         //AdminUser user = new AdminUser();
         //Console.WriteLine("IsActive: " + user.isActive);
@@ -104,20 +106,107 @@ public class Program
 
         //}
 
-            public class Sample1
-    {
-        private static int instanceVar = 10;    
+        //        public class Sample1
+        //{
+        //    private static int instanceVar = 10;    
 
-        public static void Show()
-        {
-            Sample1 obj = new Sample1();
-            Console.WriteLine(instanceVar);
-        }
+        //    public static void Show()
+        //    {
+        //        Sample1 obj = new Sample1();
+        //        Console.WriteLine(instanceVar);
+        //    }
+
+        //}
+
+
+
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------INHERITANCE-------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //1.practice
+
+        //P obj = new C();
+        //obj.M1();
+
+        //2.
+        //Bird bird = new Bird();
+        //Bird bird1 = new sparrow();
+        //Bird bird2 = new sparrowChild();
+
+        //3.Constructor chaining example in inheritance
+        //Animal animal = new Animal();
+
+        //4.
+        //Bird obj = new sparrowChild();
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+      
+//    }
+
+//}
+
+//Inheritance Dia Assignment
+
+
+public class Program
+{
+
+    public static void Main(string[] args)
+    {
+        //2.INheritance Dia Assignment
+        //Student s = new Student("Pooja", "Pune", "BE", 4, 80000);
+        //Console.WriteLine(s);
+
+        //Staff s2 = new Staff("maithili","Solapur","xyz", 30000);
+        //Console.WriteLine(s2);
+
+        //3.
+        //point3D obj = new point3D();
+        //Console.WriteLine(obj);
+
+        //point3D d1 = new point3D(1, 1, 1);
+        //Console.WriteLine(d1);
+        //float[] xyz = d1.GETXYZ();
+        //foreach(var v in xyz)
+        //{
+        //    Console.WriteLine(v);
+        //}
+
+
+
+        // --------------------------------------------------------------------------------------------------
+        //09-02-2026
+        //--------------------------------------------------------------------------------------------------
+        //1.Assignment 1:DRIVE EXAMPLE
+
+        //Author auth = new Author("Maithili","@gamil.com",'F');
+        //Console.WriteLine(auth);
+        //Book book = new Book("secrets",auth,200,2);
+        //Console.WriteLine(book);
+
+
+        //2.Assignment 2 : DRIVE EXAMPLE
+        //Customer c1 = new Customer(101, "Maithili", 'F');
+        //Console.WriteLine(c1);
+
+        //Account acc = new Account(1, c1, 90000);
+        //Console.WriteLine(acc);
+
+
+        //3.Assignment 3: DRIVE EXAMPLE
+        Customer1 cs = new Customer1(101,"Maithili",20);
+        Console.WriteLine(cs);
+
+        Invoice Inv  = new Invoice(1,cs,50000);
+        Console.WriteLine("Amt. after discount = "+ Inv.AfterAmountDiscount());
+
 
     }
 
-
-
 }
-
-
